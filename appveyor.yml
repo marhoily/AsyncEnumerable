@@ -16,8 +16,6 @@ before_build:
 cache:
   - packages -> **\packages.config
 
-test_script:
-  - xunit.console.clr4.exe AsyncEnumerable.UnitTests\bin\release\AsyncEnumerable.UnitTests.dll /appveyor
 
 after_test:
   - nuget pack AsyncEnumerable\AsyncEnumerable.nuspec -Version "%APPVEYOR_BUILD_VERSION%"
