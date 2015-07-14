@@ -194,3 +194,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+/AsyncEnumerable.v2.ncrunchsolution
+/AsyncEnumerable.UnitTests/AsyncEnumerable.UnitTests.v2.ncrunchproject
+/AsyncEnumerable/AsyncEnumerable.v2.ncrunchproject
