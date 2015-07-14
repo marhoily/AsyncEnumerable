@@ -29,6 +29,16 @@ namespace AsyncEnumerable.UnitTests
         }
 
         [Fact]
+        public async Task SelectMany_When_Last_Batch_Empty_Should_Work()
+        {
+            var enumerable = await
+                new[] { new[] { 1, 2 }, new[] { 5, 6 }, new int[0] }
+                    .SelectManyAsync(x => Task.FromResult((IEnumerable<int>)x))
+                    .ToEnumerable();
+            enumerable.Should().Equal(1, 2, 5, 6);
+        }
+
+        [Fact]
         public async Task SelectMany_When_Null_Batch_Should_Throw_NullReferenceException()
         {
             await Assert.ThrowsAsync<NullReferenceException>(async () =>
