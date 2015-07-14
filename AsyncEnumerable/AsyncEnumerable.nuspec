@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AsyncEnumerable</id>
+    <version>$version$</version>
+    <authors>Ilya Margolin</authors>
+    <projectUrl>https://github.com/marhoily/AsyncEnumerable</projectUrl>
+    <!--<iconUrl>https://raw.githubusercontent.com/marhoily/AsyncEnumerable/master/NugetIcon.png</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>IAsyncEnumerable interface definition, and some LINQ function for it</description>
+    <summary>IAsyncEnumerable interface definition, and some LINQ function for it</summary>
+    <tags>C# .net collection sequence enumerable ienumerable asynchrony async linq</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\AsyncEnumerable.dll" target="lib\net40\AsyncEnumerable.dll" />
+    <file src="bin\Release\AsyncEnumerable.XML" target="lib\net40\AsyncEnumerable.XML" />
+  </files>
+</package>
