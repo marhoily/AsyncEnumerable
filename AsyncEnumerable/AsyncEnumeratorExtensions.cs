@@ -27,12 +27,12 @@ namespace AsyncEnumerable
         }
 
         /// <summary>
-        /// 
+        /// Calls a delegate on each element of an <see cref="IAsyncEnumerable{T}"/>
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="act"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <param name="source">A sequence of values to iterate.</param>
+        /// <param name="act">The delegate to call</param>
+        /// <typeparam name="T">The type of the elements of source.</typeparam>
+        /// <returns>Task that will finish when all the delegates are called</returns>
         public static async Task ForEachAsync<T>(
             this IAsyncEnumerable<T> source, Action<T> act)
         {
@@ -43,13 +43,13 @@ namespace AsyncEnumerable
             }
         }
         /// <summary>
-        /// 
+        /// Converts <see cref="IAsyncEnumerable{T}"/> to <see cref="IEnumerable{T}"/>
+        ///     by awaiting on every moveNext one after another.
         /// </summary>
-        /// <param name="source"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static async Task<IEnumerable<T>> ToEnumerable<T>(
-            this IAsyncEnumerable<T> source)
+        /// <param name="source">A sequence of values to await.</param>
+        /// <typeparam name="T">The type of the elements of source.</typeparam>
+        /// <returns>Task that will finish when all the elements of the source sequence arrive</returns>
+        public static async Task<IEnumerable<T>> ToEnumerable<T>(this IAsyncEnumerable<T> source)
         {
             var result = new List<T>();
             var enumerator = source.GetEnumerator();
@@ -59,26 +59,29 @@ namespace AsyncEnumerable
         }
 
         /// <summary>
-        /// 
+        /// Projects each element of a sequence to an <see cref="IEnumerable{T}"/>,  
+        /// and flattens the resulting sequences into one sequence. 
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="TArg"></typeparam>
-        /// <typeparam name="TResult"></typeparam>
-        /// <returns></returns>
-        public static IAsyncEnumerable<TResult> SelectManyAsync<TArg, TResult>(
-            this IEnumerable<TArg> source,
-            Func<TArg, Task<IEnumerable<TResult>>> selector)
+        /// <param name="source">A sequence of values to project.</param>
+        /// <param name="selector">A transform function to apply to each source element.</param>
+        /// <typeparam name="TSource">The type of the elements of source.</typeparam>
+        /// <typeparam name="TResult">The type of the elements of the sequence returned by selector.</typeparam>
+        /// <returns>An <see cref="IAsyncEnumerable{T}"/> whose elements are the result of 
+        ///     invoking the one-to-many transform function on each element of the input sequence.</returns>
+        public static IAsyncEnumerable<TResult> SelectManyAsync<TSource, TResult>(
+            this IEnumerable<TSource> source,
+            Func<TSource, Task<IEnumerable<TResult>>> selector)
         {
-            return new SelectingManyAsyncEnumerable<TArg, TResult>(source, selector);
+            return new SelectingManyAsyncEnumerable<TSource, TResult>(source, selector);
         }
         /// <summary>
-        /// 
+        /// Returns a specified number of contiguous elements from the start of a sequence.
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="count"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <param name="source">The sequence to return elements from.</param>
+        /// <param name="count"> The number of elements to return.</param>
+        /// <typeparam name="T">The type of the elements of source.</typeparam>
+        /// <returns>An <see cref="IAsyncEnumerable{T}"/> that contains the specified 
+        ///     number of elements from the start of the input sequence.</returns>
         public static IAsyncEnumerable<T> Take<T>(
             this IAsyncEnumerable<T> source, int count)
         {
