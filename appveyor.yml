@@ -16,7 +16,6 @@ before_build:
 cache:
   - packages -> **\packages.config
 
-
 after_test:
   - nuget pack AsyncEnumerable\AsyncEnumerable.nuspec -Version "%APPVEYOR_BUILD_VERSION%"
 
