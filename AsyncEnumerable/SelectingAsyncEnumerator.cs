@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SeqAsync
+namespace AsyncEnumerable
 {
     internal sealed class SelectingAsyncEnumerator<TArg, TResult> : IAsyncEnumerator<TResult>
     {

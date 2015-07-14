@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace SeqAsync
+namespace AsyncEnumerable
 {
     internal sealed class TakeAsyncEnumerator<TArg> : IAsyncEnumerator<TArg>
     {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
 
-namespace SeqAsync.UnitTests
+namespace AsyncEnumerable.UnitTests
 {
     public sealed class SelectManyTests
     {

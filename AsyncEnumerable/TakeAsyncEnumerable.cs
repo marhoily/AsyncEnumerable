@@ -1,4 +1,4 @@
-namespace SeqAsync
+namespace AsyncEnumerable
 {
     internal sealed class TakeAsyncEnumerable<T> : IAsyncEnumerable<T>
     {

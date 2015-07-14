@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace SeqAsync
+namespace AsyncEnumerable
 {
     public interface IAsyncEnumerator<out T> : IDisposable
     {

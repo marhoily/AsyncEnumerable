@@ -1,4 +1,4 @@
-namespace SeqAsync
+namespace AsyncEnumerable
 {
     public interface IAsyncEnumerable<out T>
     {

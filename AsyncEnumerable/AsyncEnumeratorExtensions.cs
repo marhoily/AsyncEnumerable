@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SeqAsync
+namespace AsyncEnumerable
 {
     public static class AsyncEnumeratorExtensions
     {

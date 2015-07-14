@@ -7,8 +7,8 @@
     <ProjectGuid>{242A57DA-44F6-4527-8716-660F5C9C64DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SeqAsync</RootNamespace>
-    <AssemblyName>SeqAsync</AssemblyName>
+    <RootNamespace>AsyncEnumerable</RootNamespace>
+    <AssemblyName>AsyncEnumerable</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>57830c5a</NuGetPackageImportStamp>
