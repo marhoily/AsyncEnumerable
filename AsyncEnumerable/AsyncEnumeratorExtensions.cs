@@ -51,6 +51,17 @@ namespace AsyncEnumerable
         /// <returns>Task that will finish when all the elements of the source sequence arrive</returns>
         public static async Task<IEnumerable<T>> ToEnumerable<T>(this IAsyncEnumerable<T> source)
         {
+            return await source.ToList();
+        }
+        /// <summary>
+        /// Converts <see cref="IAsyncEnumerable{T}"/> to <see cref="IEnumerable{T}"/>
+        ///     by awaiting on every moveNext one after another.
+        /// </summary>
+        /// <param name="source">A sequence of values to await.</param>
+        /// <typeparam name="T">The type of the elements of source.</typeparam>
+        /// <returns>Task that will finish when all the elements of the source sequence arrive</returns>
+        public static async Task<List<T>> ToList<T>(this IAsyncEnumerable<T> source)
+        {
             var result = new List<T>();
             var enumerator = source.GetEnumerator();
             while (await enumerator.MoveNext())
